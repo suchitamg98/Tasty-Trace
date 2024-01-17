@@ -1,39 +1,47 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { useParams } from "react-router-dom";
+import { MENU_API } from "../utils/constants";
+
 const RestaurantMenu = () => {
-  // const [resInfo, setResInfo] = useState(null);
+  // const params = useParams();
+  // console.log(params);
+  const { resId } = useParams();
+  const [resInfo, setResInfo] = useState(null);
   useEffect(() => {
     //console.log("hi");
     fetchMenu();
   }, []);
 
   const fetchMenu = async () => {
-    try {
-      const data = await fetch(
-        // "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9705675&lng=77.7134218&restaurantId=363&catalog_qa=undefined&submitAction=ENTER"
-
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0392092&lng=77.608586&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
-      // console.log(data, "suchi");
-      const json = await data.json();
-      console.log(json);
-      // setResInfo(json.data);
-    } catch (error) {
-      console.error("Error fetching menu:", error);
-    }
+    const data = await fetch(MENU_API + resId);
+    const json = await data.json();
+    console.log(json);
+    setResInfo(json.data);
   };
-  // if (resInfo === null) {
-  //   return <Shimmer />;
-  // }
-  //fetchMenu();
+  if (resInfo === null) {
+    return <Shimmer />;
+  }
+
+  const { name, cuisines, costForTwoMessage } =
+    resInfo.cards[0]?.card?.card?.info;
+  const { itemCards } =
+    resInfo.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+  // console.log(itemCards);
   return (
     <div className="menu">
-      <h1>Name of the restaurant</h1>
+      <h1>{name}</h1>
+      <h2>{cuisines}</h2>
+      <p>{costForTwoMessage}</p>
       <h2>Menu</h2>
       <ul>
-        <li>Biryani</li>
-        <li>Burger</li>
-        <li>Masala dose</li>
+        {/* <li>{itemCards[0].card.info.name}</li>
+        <li>{itemCards[1].card.info.name}</li>
+        <li>{itemCards[2].card.info.name}</li> */}
+        {/* {itemCards.map((item) => item.card.info.name)} */}
+        {itemCards.map((item) => (
+          <li key={item.card.info.id}>{item.card.info.name}</li>
+        ))}
       </ul>
     </div>
   );
