@@ -2,7 +2,9 @@
   "name": "tasty-trace",
   "version": "1.0.0",
   "description": "",
+  "source":"./index.html",
   "scripts": {
+    "dev" : "parcel serve",
     "test": "jest"
   },
   "author": "",
