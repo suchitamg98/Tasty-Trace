@@ -5,6 +5,7 @@
   "source":"./index.html",
   "scripts": {
     "dev" : "parcel serve",
+    "build": "parcel build",
     "test": "jest"
   },
   "author": "",
