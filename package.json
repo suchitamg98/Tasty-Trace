@@ -2,10 +2,11 @@
   "name": "tasty-trace",
   "version": "1.0.0",
   "description": "",
-  "source":"./index.html",
+  "source": "./index.html",
   "scripts": {
-    "dev" : "parcel serve",
+    "dev": "parcel serve",
     "build": "parcel build",
+    "clean": "rm -rvf .parcel-cache dist",
     "test": "jest"
   },
   "author": "",
