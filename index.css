@@ -54,3 +54,7 @@
 .search-box {
   margin: 10px 0px 10px 10px;
 }
+.user-card {
+  padding: 10px;
+  border: solid 1px black;
+}
