@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "dev": "parcel server",
+    "build": "parcel build",
+    "clean": "rm -rvf .parcel-cache dist",
     "test": "jest"
   },
   "author": "",
