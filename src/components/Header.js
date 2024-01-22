@@ -8,7 +8,7 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
   // console.log(onlineStatus);
   return (
-    <div className="flex">
+    <div className="flex bg-pink-100">
       <div className="logo-container">
         <img className="logo" src={LOGO_URL}></img>
       </div>
