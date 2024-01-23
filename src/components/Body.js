@@ -12,7 +12,7 @@ const Body = () => {
   //   let resObj1 = resObj.restaurants.filter((res) => res.info.avgRating > 4.5);
   //   console.log(resObj1);
   // }, []);
-
+  console.log("body rendered", listOfRestaurants);
   useEffect(() => {
     fetchData();
   }, []);
