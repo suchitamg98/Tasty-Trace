@@ -20,6 +20,7 @@ const RestaurantMenu = () => {
   //   console.log(json);
   //   setResInfo(json.data);
   // };
+  const [showIndex, setShowIndex] = useState();
   if (resInfo === null) {
     return <Shimmer />;
   }
@@ -44,10 +45,12 @@ const RestaurantMenu = () => {
       <p className="font-bold text-lg">
         {cuisines.join(",")}-{costForTwoMessage}
       </p>
-      {catagories.map((cat) => (
+      {catagories.map((cat, index) => (
         <RestaurantCategory
           data={cat?.card?.card}
           key={cat?.card?.card.title}
+          showItem={index === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(index)}
         />
       ))}
       {/* <h2>Menu</h2>

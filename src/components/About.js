@@ -2,6 +2,8 @@ import User from "./User";
 import UserClass from "./UserClass";
 import React from "react";
 import { Component } from "react";
+import UserContext from "../utils/UserContext";
+import { data } from "autoprefixer";
 
 class About extends Component {
   constructor(props) {
@@ -18,6 +20,10 @@ class About extends Component {
         <h1>About</h1>
         <UserClass name={"Akshay"} />
         {/* <UserClass name={"second"} /> */}
+        loggedInUser1
+        <UserContext.Consumer>
+          {({ loggedInUser }) => <h1>{ loggedInUser}</h1>}
+        </UserContext.Consumer>
       </div>
     );
   }
